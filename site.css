@@ -553,13 +553,13 @@ h1,h2,h3{word-break:keep-all;overflow-wrap:break-word}.decision-copy p,.verifica
     grid-template-columns: minmax(0, 1fr);
   }
 }
-.case-main--smarthome :is(#overview, #problem, #architecture),
+.case-main--smarthome > :is(.case-section, .next-project),
 .case-section:has(> .section-body > .decision-story) {
   display: block;
   margin-inline: auto;
 }
 
-.case-main--smarthome :is(#overview, #problem) {
+.case-main--smarthome > :is(#overview, #problem, #verification, #lessons, .next-project) {
   max-width: 760px;
 }
 
@@ -582,10 +582,21 @@ h1,h2,h3{word-break:keep-all;overflow-wrap:break-word}.decision-copy p,.verifica
   width: min(100%, 640px);
 }
 
-.case-main--smarthome :is(#overview, #problem, #architecture) > .section-rail,
+.case-main--smarthome > .case-section > .section-rail,
+.case-main--smarthome > .next-project > .meta,
 .case-section:has(> .section-body > .decision-story) > .section-rail {
+  display: block;
   margin-bottom: 12px;
   padding-top: 0;
+}
+
+.case-main--smarthome #lessons .limitations {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 24px;
+}
+
+.case-main--smarthome > .next-project > nav {
+  margin-top: 24px;
 }
 
 .case-section:has(> .section-body > .decision-story) .decision {
