@@ -579,7 +579,7 @@ h1,h2,h3{word-break:keep-all;overflow-wrap:break-word}.decision-copy p,.verifica
   gap: 10px;
 }
 
-.case-main > #decisions {
+.case-main > #decisions > .section-body > :is(.decision, .decision-story, .io-example) {
   max-width: 640px;
 }
 
