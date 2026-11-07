@@ -567,6 +567,12 @@ h1,h2,h3{word-break:keep-all;overflow-wrap:break-word}.decision-copy p,.verifica
   max-width: 940px;
 }
 
+.case-main--smarthome #architecture > .section-rail,
+.case-main--smarthome #architecture > .section-body > h2 {
+  max-width: 760px;
+  margin-inline: auto;
+}
+
 .case-main--smarthome #overview .scope-note {
   grid-template-columns: minmax(0, 1fr);
   gap: 10px;
