@@ -178,9 +178,8 @@ h1,h2,h3{word-break:keep-all;overflow-wrap:break-word}.decision-copy p,.verifica
   margin-top: 16px;
 }
 
-.decision-copy > .decision-comparison {
-  display: block;
-  min-width: 0;
+.decision-story > .decision-comparison {
+  margin-top: 30px;
 }
 
 .decision-comparison table {
@@ -212,8 +211,9 @@ h1,h2,h3{word-break:keep-all;overflow-wrap:break-word}.decision-copy p,.verifica
   overflow-wrap: anywhere;
 }
 
-.decision-comparison td:nth-child(2) {
-  white-space: nowrap;
+.decision-comparison-reason {
+  margin-top: 14px;
+  font-size: 16px;
 }
 
 .decision-comparison .caption {
