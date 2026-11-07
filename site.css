@@ -553,12 +553,30 @@ h1,h2,h3{word-break:keep-all;overflow-wrap:break-word}.decision-copy p,.verifica
     grid-template-columns: minmax(0, 1fr);
   }
 }
+.case-main--smarthome :is(#overview, #problem, #architecture),
 .case-section:has(> .section-body > .decision-story) {
   display: block;
-  width: min(100%, 640px);
   margin-inline: auto;
 }
 
+.case-main--smarthome :is(#overview, #problem) {
+  max-width: 760px;
+}
+
+.case-main--smarthome #architecture {
+  max-width: 940px;
+}
+
+.case-main--smarthome #overview .scope-note {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 10px;
+}
+
+.case-section:has(> .section-body > .decision-story) {
+  width: min(100%, 640px);
+}
+
+.case-main--smarthome :is(#overview, #problem, #architecture) > .section-rail,
 .case-section:has(> .section-body > .decision-story) > .section-rail {
   margin-bottom: 12px;
   padding-top: 0;
