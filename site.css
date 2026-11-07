@@ -510,8 +510,7 @@ h1,h2,h3{word-break:keep-all;overflow-wrap:break-word}.decision-copy p,.verifica
 
 .internship-activities article {
   display: grid;
-  grid-template-columns: 8rem minmax(0, 1fr);
-  gap: 12px 24px;
+  gap: 12px;
   padding: 26px 0;
   border-top: 1px solid var(--line);
 }
@@ -529,6 +528,7 @@ h1,h2,h3{word-break:keep-all;overflow-wrap:break-word}.decision-copy p,.verifica
 
 .internship-activities p {
   max-inline-size: 42em;
+  font-size: 17px;
 }
 
 .internship-activities p + p {
@@ -549,62 +549,62 @@ h1,h2,h3{word-break:keep-all;overflow-wrap:break-word}.decision-copy p,.verifica
     margin-top: 20px;
   }
 
-  .internship-activities article {
-    grid-template-columns: minmax(0, 1fr);
-  }
 }
-.case-main--smarthome > :is(.case-section, .next-project),
-.case-section:has(> .section-body > .decision-story) {
-  display: block;
+
+.case-main {
+  --case-reading-width: 760px;
+}
+
+.case-main > :is(.case-section, .next-project, .experience-return, .project-links) {
+  max-width: var(--case-reading-width);
   margin-inline: auto;
 }
 
-.case-main--smarthome > :is(#overview, #problem, #verification, #lessons, .next-project) {
-  max-width: 760px;
+.case-main > :is(.case-section, .next-project) {
+  display: block;
 }
 
-.case-main--smarthome #architecture {
+.case-main > :is(#architecture, #workflow) {
   max-width: 940px;
 }
 
-.case-main--smarthome #architecture > .section-rail,
-.case-main--smarthome #architecture > .section-body > h2 {
-  max-width: 760px;
+.case-main > :is(#architecture, #workflow) > .section-rail,
+.case-main > :is(#architecture, #workflow) > .section-body > h2 {
+  max-width: var(--case-reading-width);
   margin-inline: auto;
 }
 
-.case-main--smarthome #overview .scope-note {
+.case-main .scope-note {
   grid-template-columns: minmax(0, 1fr);
   gap: 10px;
 }
 
-.case-section:has(> .section-body > .decision-story) {
-  width: min(100%, 640px);
+.case-main > #decisions {
+  max-width: 640px;
 }
 
-.case-main--smarthome > .case-section > .section-rail,
-.case-main--smarthome > .next-project > .meta,
-.case-section:has(> .section-body > .decision-story) > .section-rail {
+.case-main > .case-section > .section-rail,
+.case-main > .next-project > .meta {
   display: block;
   margin-bottom: 12px;
   padding-top: 0;
 }
 
-.case-main--smarthome #lessons .limitations {
+.case-main .limitations {
   grid-template-columns: minmax(0, 1fr);
   gap: 24px;
 }
 
-.case-main--smarthome > .next-project > nav {
+.case-main > .next-project > nav {
   margin-top: 24px;
 }
 
-.case-section:has(> .section-body > .decision-story) .decision {
+.case-main .decision {
   grid-template-columns: minmax(0, 1fr);
   gap: 24px;
 }
 
-.case-section:has(> .section-body > .decision-story) .decision-copy p {
+.case-main .decision-copy p {
   font-size: 17px;
 }
 
