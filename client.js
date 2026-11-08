@@ -50,4 +50,72 @@ if (indexLinks.length) {
         } }, { rootMargin: '-15% 0px -65% 0px' });
     document.querySelectorAll('.case-section').forEach(s => indexObserver.observe(s));
 }
+const shareButton = document.querySelector('[data-share]');
+const shareLabel = document.querySelector('[data-share-label]');
+const shareStatus = document.querySelector('#share-status');
+const shareDialog = document.querySelector('#share-dialog');
+const shareUrlInput = document.querySelector('#share-url');
+let shareFeedbackTimer;
+function shareFeedback(message, label = 'Share') {
+    clearTimeout(shareFeedbackTimer);
+    if (shareLabel)
+        shareLabel.textContent = label;
+    if (shareStatus)
+        shareStatus.textContent = message;
+    shareFeedbackTimer = setTimeout(() => {
+        if (shareLabel)
+            shareLabel.textContent = 'Share';
+        if (shareStatus)
+            shareStatus.textContent = '';
+    }, 3500);
+}
+if (shareButton && shareDialog && shareUrlInput) {
+    shareButton.hidden = false;
+    shareDialog.addEventListener('close', () => {
+        document.body.classList.remove('modal-open');
+        shareButton.focus({ preventScroll: true });
+    });
+    shareButton.addEventListener('click', async () => {
+        if (shareButton.disabled)
+            return;
+        shareButton.disabled = true;
+        shareFeedback('');
+        const url = new URL(document.querySelector('link[rel="canonical"]')?.href || location.href);
+        url.search = '';
+        url.hash = '';
+        const data = { title: document.title, text: '강민수의 포트폴리오입니다.', url: url.href };
+        try {
+            if (typeof navigator.share === 'function') {
+                try {
+                    if (!navigator.canShare || navigator.canShare(data)) {
+                        await navigator.share(data);
+                        shareFeedback('공유 창을 열었습니다.');
+                        return;
+                    }
+                }
+                catch (error) {
+                    // Closing the native sheet is a cancellation, not a request to copy the link.
+                    if (error instanceof DOMException && error.name === 'AbortError')
+                        return;
+                }
+            }
+            try {
+                if (!navigator.clipboard?.writeText)
+                    throw new Error('Clipboard unavailable');
+                await navigator.clipboard.writeText(data.url);
+                shareFeedback('포트폴리오 링크를 복사했습니다.', '링크 복사됨');
+            }
+            catch {
+                shareUrlInput.value = data.url;
+                shareDialog.showModal();
+                document.body.classList.add('modal-open');
+                shareUrlInput.focus();
+                shareUrlInput.select();
+            }
+        }
+        finally {
+            shareButton.disabled = false;
+        }
+    });
+}
 export {};
