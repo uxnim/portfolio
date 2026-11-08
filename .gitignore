@@ -1,0 +1,35 @@
+# Static output only. The release verifier also checks every actual file.
+/*
+!/.gitignore
+!/README.md
+!/.nojekyll
+!/index.html
+!/site.css
+!/client.js
+!/projects/
+!/experience/
+!/fonts/
+!/media/
+
+# Never stage private source material or local tools, even inside allowed folders.
+**/.env
+**/.env.*
+**/node_modules/
+**/inputs/
+**/_inputs/
+**/review/
+**/qa/
+*.pdf
+*.docx
+*.pptx
+*.xlsx
+*.zip
+*.pem
+*.key
+*.p12
+*.pfx
+*.log
+*.map
+*.json
+.DS_Store
+Thumbs.db
