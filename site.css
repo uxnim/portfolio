@@ -935,6 +935,9 @@ button:active:not(:disabled){transform:translateY(1px)}
   /* The section list follows the introduction, one row after another, top to bottom. */
   .home-hero.is-go .hero-index>a{animation:hero-rise .6s var(--ease-out) both;animation-delay:calc(.95s + var(--i) * 70ms)}
 }
+/* The list's top rule belongs to its first row, so it cascades in with the rows instead of waiting alone. */
+.hero-index{border-top:0}
+.hero-index>a:first-child{border-top:1px solid var(--line)}
 @keyframes hero-rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
 @keyframes hero-dot{from{opacity:0;transform:translateY(-.35em)}to{opacity:1;transform:none}}
 @keyframes hero-failsafe{to{opacity:1}}
