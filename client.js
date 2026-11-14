@@ -118,4 +118,11 @@ if (shareButton && shareDialog && shareUrlInput) {
         }
     });
 }
+// Start the hero entrance only once Pretendard is in, so the name never swaps fonts mid-motion.
+const hero = document.querySelector('.home-hero');
+if (hero) {
+    const go = () => hero.classList.add('is-go');
+    const fallback = setTimeout(go, 1200);
+    document.fonts.load('400 1em Pretendard').then(() => { clearTimeout(fallback); go(); }, go);
+}
 export {};
